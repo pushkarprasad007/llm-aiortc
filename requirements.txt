@@ -1,0 +1,5 @@
+fastapi
+aiortc
+numpy
+av
+pydub
