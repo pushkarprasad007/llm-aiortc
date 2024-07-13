@@ -3,3 +3,4 @@ aiortc
 numpy
 av
 pydub
+aiohttp
