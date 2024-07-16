@@ -1,3 +1,4 @@
+import uvicorn
 import argparse
 import asyncio
 import json
@@ -228,7 +229,7 @@ def create_bg_loop():
     t.start()
     return new_loop
 
-if __name__ == "__main__":
+async def main():
     parser = argparse.ArgumentParser(description="WebRTC AI Voice Chat")
     parser.add_argument("--cert-file", help="SSL certificate file (for HTTPS)")
     parser.add_argument("--key-file", help="SSL key file (for HTTPS)")
@@ -249,5 +250,13 @@ if __name__ == "__main__":
     else:
         ssl_context = None
 
-    import uvicorn
-    uvicorn.run(app, host=args.host, port=args.port)
+    
+    # uvicorn.run("server_fastapi:app", host=args.host, port=args.port)
+
+    config = uvicorn.Config("server_fastapi:app", host=args.host, port=args.port, log_level="info")
+    print(config.workers)
+    server = uvicorn.Server(config)
+    await server.serve()
+
+if __name__ == "__main__":
+    asyncio.run(main())
