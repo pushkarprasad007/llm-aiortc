@@ -1,4 +1,4 @@
-## Description
+## Conversational Apps using WebRTC with Python backend
 This sample repo serves as a PoC for conversational AI apps using python on the server side. It is built on giant shoulders of aiortc 🙏. So the streaming of audio is using webrtc.
 
 The user speaks something in the browser after connection is there which gets recorded on the backend. In response, I've simply queued 3 audios, which play back to back as a response. This is close to how conversational apps in real life using LLM would be, since LLM respond with result token by token, so its possible to send partial response as soon it hits a punctuation mark or so. 
